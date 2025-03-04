@@ -23,13 +23,18 @@ let initialRightAccept = 0;
 const maxDragDecline = 100;
 const maxDragAccept = 100;
 
-// Start ringtone and pulsating animation on page load
-window.addEventListener('load', () => {
-  // Try to play ringtone (may require user interaction due to autoplay restrictions)
+// Function to start ringtone
+function startRingtone() {
   ringtone.play().catch(error => {
     console.log('Autoplay prevented. User interaction required to start ringtone.');
+    // Add user interaction event to start ringtone
+    document.addEventListener('click', startRingtone);
+    document.addEventListener('touchstart', startRingtone);
   });
+}
 
+// Start ringtone and pulsating animation on page load
+window.addEventListener('load', () => {
   // Start pulsating animation on both buttons
   declineBtn.classList.add('pulsating');
   acceptBtn.classList.add('pulsating');
@@ -37,6 +42,9 @@ window.addEventListener('load', () => {
   // Show arrow animations
   leftArrows.style.display = 'block';
   rightArrows.style.display = 'block';
+
+  // Attempt to start ringtone
+  startRingtone();
 });
 
 // Function to stop ringtone
