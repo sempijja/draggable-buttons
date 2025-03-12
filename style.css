@@ -22,7 +22,7 @@ html, body {
     height: 100vh;
     touch-action: none;
     overflow: hidden;
-    justify-content: flex-end; /* This aligns the content to the bottom */
+    justify-content: flex-end; /* aligns the content to the bottom */
   }
 
   .call-container {
@@ -191,6 +191,34 @@ html, body {
     }
   }
 
+  @keyframes arrowAnimateRightToLeft {
+    0% {
+      opacity: 0;
+      transform: translateX(0);
+    }
+    20% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      transform: translateX(-15px);
+    }
+  }
+
+  @keyframes arrowAnimateLeftToRight {
+    0% {
+      opacity: 0;
+      transform: translateX(0);
+    }
+    20% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      transform: translateX(15px);
+    }
+  }
+
   .icon-chevron-right1 {
     animation: arrowAnimate 1.5s infinite;
     animation-delay: 0s;
@@ -225,6 +253,14 @@ html, body {
     margin-left: 30px;
   }
 
+  .arrow-1, .arrow-2, .arrow-3 {
+    animation: arrowAnimateLeftToRight 1.5s infinite;
+  }
+
+  .arrow-4, .arrow-5, .arrow-6 {
+    animation: arrowAnimateRightToLeft 1.5s infinite;
+  }
+
   .pulsating {
     animation: pulse 1.5s infinite;
   }
@@ -243,9 +279,9 @@ html, body {
   }
 
   .icon-chevron-left {
-    transform: rotate(45deg);
+    transform: rotate(45deg); /* Adjusted rotation */
   }
 
   .icon-chevron-right {
-    transform: rotate(-135deg);
+    transform: rotate(-135deg); /* Adjusted rotation */
   }
